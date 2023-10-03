@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato:wght@700&display=swap');
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    top: 0;
+    padding: 0;
+    background-color: #FFF4F0;
+    color: #1E2019;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: none;
+}
+
+.fontHead {
+    font-family: 'Lato', sans-serif;
+}
+
+.fontBody {
+    font-family: 'Inter', sans-serif;
+}
+
+.colorPrimary {
+    color: #255F85;
+}
+
+.colorBgPrimary {
+    background-color: #255F85;
+}
+
+.colorSecondary {
+    color: #E9724C;
+}
+
+.colorBgSecondary {
+    background-color: #E9724C;
+}
+
+.colorWhite {
+    color: #FFF9FB;
+}
+
+.colorBgWhite {
+    background-color: #FFF9FB;
+}
+
+.colorWhite2 {
+    color: #F5F5F5;
+}
+
+.colorBgWhite2 {
+    background-color: #F5F5F5;
+}
+
+.colorBlack {
+    color: #1E2019;
+}
+
+.colorBgBlack {
+    background-color: #1E2019;
+}
+
+.colorGray {
+    color: #D3D4D9;
+}
+
+.colorBgGray {
+    background-color: #D3D4D9;
+}
+
+.btnPrimary, .btnSecondary, .btnOutline, .btnPrimary:focus, .btnPrimary:active, .btnSecondary:focus, .btnSecondary:active, .btnOutline:focus, .btnOutline:active {
+    height: fit-content;
+    outline: none !important;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.btnPrimary, .btnPrimary:focus, .btnPrimary:active {
+    font-family: 'Lato', sans-serif;
+    background-color: #E9724C;
+    border: 1px solid #E9724C;
+}
+
+.btnPrimary:hover {
+    background-color: #F17C65;
+    border: 1px solid #F17C65;
+}
+
+.btnSecondary, .btnSecondary:focus, .btnSecondary:active {
+    font-family: 'Lato', sans-serif;
+    background-color: #255F85;
+    border: 1px solid #255F85;
+}
+
+.btnSecondary:hover {
+    background-color: #2971A1;
+    border: 1px solid #2971A1;
+}
+
+.btnOutline, .btnOutline:focus, .btnOutline:active {
+    font-family: 'Lato', sans-serif;
+    color: #E9724C;
+    border: 1px solid #E9724C;
+}
+
+.btnOutline:hover {
+    color: #FFF9FB;
+    background-color: #E9724C;
+    border: 1px solid #E9724C;
+}
