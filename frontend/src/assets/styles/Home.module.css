@@ -1,0 +1,22 @@
+.homeContent {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.homeContent h1 {
+    font-size: 80px;
+}
+
+.homeContent h2 {
+    font-size: 30px;
+}
+
+.homeButton {
+    margin: 10px 0;
+    padding: 15px;
+    width: 350px;
+}
+
+.homeButton h3 {
+    font-size: 25px;
+}

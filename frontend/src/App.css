@@ -23,6 +23,11 @@ a {
     color: none;
 }
 
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .fontHead {
     font-family: 'Lato', sans-serif;
 }

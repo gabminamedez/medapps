@@ -1,0 +1,27 @@
+.header {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto 10px;
+}
+
+.headerLeft, .headerRight {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+}
+
+.headerLeft h1 {
+    margin-top: 8px;
+}
+
+.headerRight p {
+    margin-top: 16px;
+}
