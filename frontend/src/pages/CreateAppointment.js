@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 import { timeblocks } from '../assets/constants';
-import { createAppointment } from '../axios/appointments';
+import { createAppointment, readAppointments } from '../axios/appointments';
 import Header from '../components/Header';
 
 import styles from '../assets/styles/CreateAppointment.module.css';
@@ -17,8 +16,18 @@ const CreateAppointment = () => {
     const [errDate, setErrDate] = useState("");
     const [times, setTimes] = useState([]);
     const [errTimes, setErrTimes] = useState([]);
+    const [unavailableTimes, setUnavailableTimes] = useState([]);
 
-    const unavailableTimes = [3, 5, 10];
+    const handleDateChange = async (date) => {
+        setDate(date);
+        const appointmentsOnDate = await readAppointments(date, true);
+        var tempUnavailableTimes = [];
+        for (const appointment of appointmentsOnDate) {
+            tempUnavailableTimes = tempUnavailableTimes.concat(appointment.times.split(","));
+        }
+        setUnavailableTimes(tempUnavailableTimes);
+        setTimes([]);
+    }
 
     const handleTimeClick = (e, idx) => {
         e.preventDefault();
@@ -57,7 +66,7 @@ const CreateAppointment = () => {
 
         var selectedDate = new Date();
         selectedDate.setFullYear(selectedYear);
-        selectedDate.setMonth(selectedMonth);
+        selectedDate.setMonth(selectedMonth - 1);
         selectedDate.setDate(selectedDay);
 
         if(selectedDate.getDay() === 0) {
@@ -80,8 +89,13 @@ const CreateAppointment = () => {
             setComment("");
             setDate("");
             setTimes([]);
+            window.location = "/";
         }
     };
+
+    useEffect(() => {
+        alert(unavailableTimes);
+    }, [unavailableTimes]);
 
     return (
         <div>
@@ -97,29 +111,29 @@ const CreateAppointment = () => {
                     <Form.Group className="mb-3">
                         <h6 className="fontHead">Patient Name</h6>
                         <Form.Control className="fontBody" type="text" placeholder="Enter patient name" onChange={({target}) => {setPatient(target.value)}} />
-                        <p className="fontBody">{ errPatient }</p>
+                        <p className="fontBody text-danger">{ errPatient }</p>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <h6 className="fontHead">Comment</h6>
                         <Form.Control className="fontBody" as="textarea" rows={5} placeholder="Enter comment" onChange={({target}) => {setComment(target.value)}} />
-                        <p className="fontBody">{ errComment }</p>
+                        <p className="fontBody text-danger">{ errComment }</p>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <h6 className="fontHead">Date</h6>
-                        <Form.Control className="fontBody w-50" type="date" placeholder="Enter schedule" onChange={({target}) => {setDate(target.value)}} />
-                        <p className="fontBody">{ errDate }</p>
+                        <Form.Control className="fontBody w-50" type="date" placeholder="Enter schedule" onChange={({target}) => {handleDateChange(target.value)}} />
+                        <p className="fontBody text-danger">{ errDate }</p>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
                         <h6 className="fontHead">Time</h6>
-                        <p className="fontBody">{ errDate }</p>
+                        <p className="fontBody text-danger">{ errTimes }</p>
                         <table className={styles.timeTable}>
                             {
                                 timeblocks.map((time, idx) => {
                                     return (
-                                        <tr>
+                                        <tr key={idx}>
                                             <td className={styles.timeCell}>{time}</td>
                                             <td>
                                                 {

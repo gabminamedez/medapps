@@ -17,30 +17,24 @@ const createAppointment = async (patient, comment, date, times) => {
     }
 };
 
-// const readCheckins = async (email, sched) => {
-//     try {
-//         const final = new Date(sched.getTime() - (sched.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
-//         const checkins = await axios.get(`/api/checkins?user=${email}&schedule=${final}`);
-        
-//         return await checkins.data;
-//     } catch (err) {
-//         console.error(err);
-//         alert(err.message);
-//     }
-// };
+const readAppointments = async (date, inForm) => {
+    try {
+        var final;
+        if (inForm) {
+            final = new Date(date).toISOString().split('T')[0];
+        }
+        else {
+            final = new Date(date.getTime() - (date.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
+        }
 
-// const readCheckinsRange = async (email, startDate, endDate) => {
-//     try {
-//         const finalStart = new Date(startDate.getTime() - (startDate.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
-//         const finalEnd = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000 )).toISOString().split("T")[0];
-//         const checkins = await axios.get(`/api/checkins?user=${email}&startDate=${finalStart}&endDate=${finalEnd}`);
+        const appointments = await axios.get(`/api/appointments?date=${final}`);
         
-//         return await checkins.data;
-//     } catch (err) {
-//         console.error(err);
-//         alert(err.message);
-//     }
-// };
+        return await appointments.data;
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
 
 // const deleteCheckin = async (uuid) => {
 //     try {
@@ -51,4 +45,4 @@ const createAppointment = async (patient, comment, date, times) => {
 //     }
 // };
 
-export { createAppointment };
+export { createAppointment, readAppointments };

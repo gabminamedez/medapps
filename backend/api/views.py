@@ -7,10 +7,9 @@ class AppointmentView(viewsets.ModelViewSet):
     serializer_class = AppointmentSerializer
 
     def get_queryset(self):
-        startDate = self.request.query_params.get('startDate')
-        endDate = self.request.query_params.get('endDate')
-        if user is not None and startDate is not None and endDate is not None:
-            queryset = Appointment.objects.filter(schedule__gte=startDate, schedule__lte=endDate)
+        date = self.request.query_params.get('date')
+        if date is not None:
+            queryset = Appointment.objects.filter(date=date)
         else:
             queryset = Appointment.objects.all()
 
