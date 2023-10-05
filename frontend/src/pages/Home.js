@@ -6,13 +6,9 @@ import Header from '../components/Header';
 import styles from '../assets/styles/Home.module.css';
 
 const Home = () => {
-    const handleLoginShow = async (e) => {
-        e.preventDefault();
-    };
-
     return (
         <div>
-            <Header />
+            <Header isLanding={true} />
 
             <div className={styles.homeContent + " content"}>
                 <h1 className="colorPrimary">Help is <span className="colorSecondary">in</span>.</h1>

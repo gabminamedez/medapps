@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0 0 20px 0;
     top: 0;
     padding: 0;
     background-color: #FFF4F0;
@@ -123,4 +123,12 @@ a {
     color: #FFF9FB;
     background-color: #E9724C;
     border: 1px solid #E9724C;
+}
+
+.reactIcon {
+    margin-top: -3px;
+}
+
+.reactIconBig {
+    margin-top: -5px;
 }
