@@ -1,0 +1,25 @@
+.appointment {
+    margin: 20px auto;
+    padding: 0 10px;
+    border: 2px solid #255F85;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.appointment:hover {
+    background-color: #E9724C;
+    color: #FFF9FB;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.patient {
+    font-weight: 900;
+    font-size: 24px;
+    margin-top: 14px;
+}
+
+.times {
+    margin-top: -20px;
+    font-size: 16px;
+}

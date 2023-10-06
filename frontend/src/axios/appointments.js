@@ -36,13 +36,13 @@ const readAppointments = async (date, inForm) => {
     }
 };
 
-// const deleteCheckin = async (uuid) => {
-//     try {
-//         await axios.delete(`/api/checkins/${uuid}`);
-//     } catch (err) {
-//         console.error(err);
-//         alert(err.message);
-//     }
-// };
+const deleteAppointment = async (uuid) => {
+    try {
+        await axios.delete(`/api/appointments/${uuid}`);
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
 
-export { createAppointment, readAppointments };
+export { createAppointment, readAppointments, deleteAppointment };

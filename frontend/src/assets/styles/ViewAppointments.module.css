@@ -1,0 +1,58 @@
+.calendarDiv {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.calendarDiv > * {
+    margin: 0 30px 20px;
+}
+
+.calendarDir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendarDir > * {
+    margin: 0 15px;
+}
+
+.calendarLeft, .calendarRight {
+    height: 40px;
+    width: 40px;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+}
+
+.calendarLeft:hover, .calendarRight:hover {
+    color: #E9724C;
+}
+
+.calendarButton {
+    cursor: pointer;
+}
+
+.calendarIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.calendarLabel {
+    text-align: center;
+}
+
+.dayLabel {
+    font-size: 20px;
+}
+
+.dateLabel {
+    margin-top: -20px;
+    font-size: 28px;
+}
+
+.appointmentsList {
+    width: 50%;
+}
