@@ -1,13 +1,14 @@
-.appointment {
+.appointmentExpanded, .appointmentDisplayed {
     margin: 20px auto;
     padding: 0 10px;
     border: 2px solid #255F85;
+    background-color: #FFF9FB;
     border-radius: 5px;
     cursor: pointer;
     transition: .1s ease-in-out;
 }
 
-.appointment:hover {
+.appointmentDisplayed:hover {
     background-color: #E9724C;
     color: #FFF9FB;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -22,4 +23,9 @@
 .times {
     margin-top: -20px;
     font-size: 16px;
+}
+
+.cardButton {
+    margin-right: 10px;
+    margin-bottom: 20px;
 }

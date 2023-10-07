@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .calendarDiv > * {
@@ -54,5 +53,11 @@
 }
 
 .appointmentsList {
-    width: 50%;
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.appointmentDetails {
+    min-height: 100vh;
+    border-left: 1px solid rgb(158, 157, 157);
 }

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { AiFillLeftSquare, AiFillRightSquare } from 'react-icons/ai';
 
-import { timeblocks } from '../assets/constants';
-import { readAppointments, deleteAppointment } from '../axios/appointments';
+import { readAppointments } from '../axios/appointments';
 import AppointmentCard from '../components/AppointmentCard';
 import Header from '../components/Header';
 
@@ -12,6 +11,7 @@ import styles from '../assets/styles/ViewAppointments.module.css';
 const ViewAppointments = () => {
     const [sched, setSched] = useState(new Date());
     const [appointments, setAppointments] = useState(null);
+    const [selectedAppointment, setSelectedAppointment] = useState(null);
 
     const handleLeftCalendar = () => {
         setSched(new Date(Date.parse(sched) - 86400 * 1000));
@@ -26,6 +26,10 @@ const ViewAppointments = () => {
     const handleDateChange = (date) => {
         setSched(date);
         setAppointments(null);
+    };
+
+    const handleSelectAppointment = (id) => {
+        setSelectedAppointment(id);
     };
 
     useEffect(() => {
@@ -59,17 +63,22 @@ const ViewAppointments = () => {
                     </div>
                 </div>
 
-                <hr />
-
                 <div className={styles.appointmentsList}>
+                    <hr />
+                    {
+                        appointments && appointments.length === 0 && <h2 className="text-center">No appointments!</h2>
+                    }
                     {
                         appointments && appointments.map((appointment) => {
-                            return <AppointmentCard appointment={appointment} />
+                            return <AppointmentCard 
+                                    key={appointment.uuid}
+                                    appointment={appointment} 
+                                    isExpanded={selectedAppointment === appointment.uuid}
+                                    onClick={() => handleSelectAppointment(appointment.uuid)} 
+                                    />
                         })
                     }
                 </div>
-
-                <div className={styles.vl} />
             </div>
         </div>
     );
