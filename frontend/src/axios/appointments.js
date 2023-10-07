@@ -6,7 +6,7 @@ const createAppointment = async (patient, comment, date, times) => {
             patient: patient,
             comment: comment,
             date: date,
-            times: times.toString()
+            times: times.sort().toString()
         };
         const addedAppointment = await axios.post("/api/appointments/", appointment);
 
@@ -42,7 +42,7 @@ const editAppointment = async (uuid, patient, comment, date, times) => {
             patient: patient,
             comment: comment,
             date: date,
-            times: times.toString()
+            times: times.sort().toString()
         };
         const addedAppointment = await axios.put("/api/appointments/" + uuid + "/", appointment);
 

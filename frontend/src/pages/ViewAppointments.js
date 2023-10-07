@@ -71,10 +71,10 @@ const ViewAppointments = () => {
                     {
                         appointments && appointments.map((appointment) => {
                             return <AppointmentCard 
-                                    key={appointment.uuid}
-                                    appointment={appointment} 
-                                    isExpanded={selectedAppointment === appointment.uuid}
-                                    onClick={() => handleSelectAppointment(appointment.uuid)} 
+                                        key={appointment.uuid}
+                                        appointment={appointment} 
+                                        isExpanded={selectedAppointment === appointment.uuid}
+                                        onClick={() => handleSelectAppointment(appointment.uuid)} 
                                     />
                         })
                     }

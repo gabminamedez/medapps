@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 import { timeblocks } from '../assets/constants';
@@ -18,9 +18,9 @@ const CreateAppointment = () => {
     const [errTimes, setErrTimes] = useState("");
     const [unavailableTimes, setUnavailableTimes] = useState([]);
 
-    const handleDateChange = async (date) => {
-        setDate(date);
-        const appointmentsOnDate = await readAppointments(date, true);
+    const handleDateChange = async (newDate) => {
+        setDate(newDate);
+        const appointmentsOnDate = await readAppointments(newDate, true);
         var tempUnavailableTimes = [];
         for (const appointment of appointmentsOnDate) {
             tempUnavailableTimes = tempUnavailableTimes.concat(appointment.times.split(","));
@@ -37,7 +37,18 @@ const CreateAppointment = () => {
             setTimes(newTimes.filter(item => item !== idx));
         }
         else {
-            setTimes([...times, idx]);
+            var sortedTimes = times.sort();
+            if (sortedTimes.length >= 1) {
+                if (sortedTimes.includes(idx + 1) || sortedTimes.includes(idx - 1)) {
+                    setTimes([...times, idx]);
+                }
+                else {
+                    alert("Selected times must be consecutive.");
+                }
+            }
+            else {
+                setTimes([...times, idx]);
+            }
         }
     };
 
@@ -93,10 +104,6 @@ const CreateAppointment = () => {
         }
     };
 
-    useEffect(() => {
-        alert(unavailableTimes);
-    }, [unavailableTimes]);
-
     return (
         <div>
             <Header isLanding={false} />
@@ -139,7 +146,7 @@ const CreateAppointment = () => {
                                                 {
                                                     times.includes(idx) ?
                                                         <div className={styles.timeBoxSelected} onClick={(e) => handleTimeClick(e, idx)}>Selected</div>
-                                                        : unavailableTimes.includes(idx) 
+                                                        : unavailableTimes.includes(idx.toString()) 
                                                             ? <div className={styles.timeBoxUnavailable}>Unavailable</div>
                                                             : <div className={styles.timeBoxAvailable} onClick={(e) => handleTimeClick(e, idx)}>Available</div>
                                                 }

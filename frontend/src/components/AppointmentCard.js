@@ -31,9 +31,10 @@ const AppointmentCard = ({ appointment, isExpanded, onClick }) => {
         <div className={isExpanded ? styles.appointmentExpanded : styles.appointmentDisplayed} onClick={onClick}>
             <p className={styles.patient + " fontBody"}><b>{ appointment.patient }</b></p>
             {
-                appointment.times.split(",").map((timeIdx) => {
-                    return <p className={styles.times + " fontBody colorPrimary"}>{ timeblocks[timeIdx] }</p>
-                })
+                appointment.times.split(",").length === 1 ? 
+                    <p className={styles.times + " fontBody colorPrimary"}>{ timeblocks[appointment.times.split(",")[0].toString()] }</p>
+                    :
+                    <p className={styles.times + " fontBody colorPrimary"}>{ timeblocks[appointment.times.split(",")[0].toString()].split(" - ")[0] } - { timeblocks[appointment.times.split(",")[appointment.times.split(",").length - 1].toString()].split(" - ")[1] }</p>
             }
             {
                 isExpanded && 
