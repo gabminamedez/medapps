@@ -1,13 +1,23 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
+import EditAppointmentModal from './EditAppointmentModal';
 import DeleteAppointmentModal from './DeleteAppointmentModal';
 import { timeblocks } from '../assets/constants';
 
 import styles from '../assets/styles/AppointmentCard.module.css';
 
 const AppointmentCard = ({ appointment, isExpanded, onClick }) => {  
+    const [editShow, setEditShow] = useState(false);
     const [deleteShow, setDeleteShow] = useState(false);
+
+    const handleEditShow = () => {
+        setEditShow(true);
+    };
+
+    const handleEditClose = () => {
+        setEditShow(false);
+    };
 
     const handleDeleteShow = () => {
         setDeleteShow(true);
@@ -31,11 +41,12 @@ const AppointmentCard = ({ appointment, isExpanded, onClick }) => {
                     <hr />
                     <p className={styles.comment + " fontBody"}><b>{ appointment.comment }</b></p>
 
-                    <Button className={styles.cardButton + " btnSecondary"}>Edit</Button>
+                    <Button className={styles.cardButton + " btnSecondary"} onClick={handleEditShow}>Edit</Button>
                     <Button className={styles.cardButton + " btnSecondary bg-danger"} onClick={handleDeleteShow}>Delete</Button>
                 </div>
             }
 
+            <EditAppointmentModal show={editShow} onHide={handleEditClose} appointment={appointment} />
             <DeleteAppointmentModal show={deleteShow} onHide={handleDeleteClose} appointment={appointment} />
         </div>
     );

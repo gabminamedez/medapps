@@ -15,7 +15,7 @@ const CreateAppointment = () => {
     const [date, setDate] = useState("");
     const [errDate, setErrDate] = useState("");
     const [times, setTimes] = useState([]);
-    const [errTimes, setErrTimes] = useState([]);
+    const [errTimes, setErrTimes] = useState("");
     const [unavailableTimes, setUnavailableTimes] = useState([]);
 
     const handleDateChange = async (date) => {

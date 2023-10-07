@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 import { deleteAppointment } from '../axios/appointments';
 

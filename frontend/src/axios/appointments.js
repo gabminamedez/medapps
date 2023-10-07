@@ -36,6 +36,23 @@ const readAppointments = async (date, inForm) => {
     }
 };
 
+const editAppointment = async (uuid, patient, comment, date, times) => {
+    try {
+        const appointment = {
+            patient: patient,
+            comment: comment,
+            date: date,
+            times: times.toString()
+        };
+        const addedAppointment = await axios.put("/api/appointments/" + uuid + "/", appointment);
+
+        console.log("Edited appointment for " + addedAppointment.patient);
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
 const deleteAppointment = async (uuid) => {
     try {
         await axios.delete(`/api/appointments/${uuid}`);
@@ -45,4 +62,4 @@ const deleteAppointment = async (uuid) => {
     }
 };
 
-export { createAppointment, readAppointments, deleteAppointment };
+export { createAppointment, readAppointments, editAppointment, deleteAppointment };
